@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  web-llaverias-14:
+    image: odoo:14
+
+    depends_on:
+      - db-llaverias-14
+    ports:
+      - "22500:8069"
+    volumes:
+      - odoo-web-llaverias:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./custom:/mnt/custom-addons
+      - ./terceros14_community:/mnt/terceros-addons
+      - ./proandsysdte14:/mnt/proandsys-addons
+    #environment:
+      #- HOST: # Defaults to db.
+      #- PORT: # Defaults to 5432.
+      #- USER: # Defaults to odoo.
+      #- PASSWORD: #Defaults to odoo.
+    environment:
+      - PYTHONUNBUFFERED=0
+  db-llaverias-14:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-llaverias:/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-web-llaverias:
+  odoo-db-llaverias:
+
+#ambiente con repositorio como en ambiente de pruebas es community

@@ -1,0 +1,6 @@
+[submodule "proandsysdte14"]
+	path = proandsysdte14
+	url = https://github.com/odooconsultores/proandsysdte14.git
+[submodule "terceros14_community"]
+	path = terceros14_community
+	url = https://github.com/odooconsultores/terceros14_community.git
